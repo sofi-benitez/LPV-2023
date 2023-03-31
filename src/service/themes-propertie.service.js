@@ -8,7 +8,7 @@ const listarServ = async function(txtbuscar) {
         const themes = await sequelize.query(`SELECT * 
                                     FROM themes_properties 
                                     Where 1 = 1
-                                        AND theme_id = '${txtbuscar}'
+                                        
                                     ORDER BY id`);
         console.log("temas: ",themes);
         if(themes && themes[0]){
