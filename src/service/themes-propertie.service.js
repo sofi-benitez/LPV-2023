@@ -8,7 +8,7 @@ const listarServ = async function(txtbuscar) {
         const themes = await sequelize.query(`SELECT * 
                                     FROM themes_properties 
                                     Where 1 = 1
-                                        AND UPPER(property_name) LIKE UPPER('%${txtbuscar}%') 
+                                        AND UPPER(property_name) LIKE ('%${txtbuscar}%') 
                                     ORDER BY id`);
         console.log("temas: ",themes);
         if(themes && themes[0]){
@@ -28,7 +28,7 @@ const ConsultaridServ = async function(txtid) {
         const Result = await ThemePropertieModel.findByPk(txtid);
 
         if(Result){
-            return Result[0];
+            return Result;
         }else{
             return [];
         }
