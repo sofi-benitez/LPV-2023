@@ -3,7 +3,7 @@ const ThemeService = require("../../service/themes-propertie.service");
 const {sequelize} = require("../../connection");
 
 const listar = async function(req, res) {
-    console.log("Listar temas");
+    console.log("Listar propiedades de temas");
     try {
         const themes = await ThemeService.listarServ(req.query.filtro || '');
 
@@ -30,7 +30,7 @@ const listar = async function(req, res) {
 };
 
 const Consultarid = async function(req, res) {
-    console.log("Consultar tema");
+    console.log("Consultar propiedad del tema");
     try {
         const ThemeModelResult = await ThemeService.ConsultaridServ(req.params.id);
         console.log("theme: ",ThemeModelResult);
@@ -55,7 +55,7 @@ const Consultarid = async function(req, res) {
 };
 
 const actualizar = async function(req, res) {
-    console.log("actualizar temas pro");
+    console.log("actualizar propiedades de temas");
 
     let temaRetorno = null;
     
@@ -77,13 +77,13 @@ const actualizar = async function(req, res) {
 };
 
 const eliminar = async function(req, res) {
-    console.log("eliminar tema");
+    console.log("eliminar propiedad del tema");
     try{
         await ThemeService.eliminarServ(req.params.id);
         res.json({
             success : true
         });
-        console.log("Eliminado tema nro: ",req.params.id);
+        console.log("Eliminado propiedad del tema nro: ",req.params.id);
     } catch(error) {
         res.json({
             success : false,
