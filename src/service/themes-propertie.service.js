@@ -8,7 +8,7 @@ const listarServ = async function(txtbuscar) {
         const themes = await sequelize.query(`SELECT * 
                                     FROM themes_properties 
                                     Where 1 = 1
-                                        AND UPPER(property_name) LIKE ('%${txtbuscar}%') 
+                                        AND theme_id = '${txtbuscar}'
                                     ORDER BY id`);
         console.log("temas: ",themes);
         if(themes && themes[0]){
@@ -69,7 +69,11 @@ const actualizarServ = async function(id, theme_id, property_name, property_valu
 const eliminarServ = async function(txtid) {
     console.log("eliminar tema Service");
     try{
-        await ThemePropertieModel.destroy(txtid);
+        await ThemePropertieModel.destroy({
+            where: {
+                theme_id : txtid
+            }
+        });
         console.log("Tema eliminado Service");
     } catch(error) {
         console.log(error);
