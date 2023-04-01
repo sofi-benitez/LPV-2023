@@ -71,7 +71,7 @@ const eliminarServ = async function(txtid) {
     try{
         await ThemePropertieModel.destroy({
             where: {
-                theme_id : txtid
+                id : txtid
             }
         });
         console.log("Tema eliminado Service");
